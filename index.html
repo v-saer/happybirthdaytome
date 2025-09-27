@@ -323,7 +323,7 @@
                 <p class="text-gray-300 text-center">Scan the **KHQR code** or click the link below to send your gift.</p>
                 
                 <div class="p-4 bg-white rounded-xl shadow-inner border border-gray-200">
-                    <img id="qrImage" src="" alt="Payment QR Code" class="w-48 h-48 rounded-lg qr-pulse" />
+                    <img id="qr.jpg" src="" alt="Payment QR Code" class="w-48 h-48 rounded-lg qr-pulse" />
                 </div>
                 
                 <a id="paymentLink" href="#" target="_blank" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-extrabold py-3 px-6 rounded-xl transition duration-300 w-full text-center text-lg mt-6 gift-button" data-amount="0">
@@ -339,15 +339,15 @@
 
     <script>
         // --- Configuration: You MUST replace these placeholders with your ACTUAL payment details ---
-        const qrImg = {
-            '1': { qrImg.src: = "images/qr1.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0gh+uoMvC+kRdqomclHVU0NG3t0nGIv0POHZHAxA6rS+KSI75Txm8kB2jtdSHGlURe84TWArCqu3w1/e03B1QkplPO+Djm1Z6BazPlobbvUplDyz9Lwobq1q2BAVxWV/PcJ&key=khqr"},
-            '5': { qrImg.src: = "images/qr5.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0gh6QyVyskjemucEd5uYQ2jwylCwEj+++WY8lOg9JIIGfjvOi7HHXsDLN9VSV1rKTygT4JdfkPqR27RxfZ38gbPeKhh1gJKFy1qx90vJRGJHlCLyQWQCLsQ2XST6Tc72KIN&key=khqr" },
-            '10': { qrImg.src: = "images/qr10.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0ghQXbdT4fvGeIaprwqAJQMpc9UEJKPeF/DDVTdawDsMZNeq0efeWgG3tfP6aijijjv/4WBA9+RvI7KITvIFt94bsXSsbHH5tbLCnxJfF+ckBXCbVMJeBhYC7oKrYXKkr4u&key=khqr" },
-            '20': { qrImg.src: = "images/qr20.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0ghEYeCD+CZuTcATINffu/GhO5/V0WF1t0sYppXkkj27c3dgtGMehcn68UodNfZBg6BB+13yYBD+Nq9F/dJKVieqPixSFmK9bdVP+k8f2zrBilMIKt5AbzIE1MT7m/QLQKA&key=khqr" },
-            '25': { qrImg.src: = "images/qr25.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0gh5KYUtATUmOtIGgNaUJYSbtSMdSys2X9aAua5EvhDNZ9Gqa2GD/IpFaHy366vP5W/J4JVo6Me5iYo+A1eh33js+PGFa0MQgm1pUtE9PYEcUB/jKrwNsOnfFgBzZ8JApjQ&key=khqr" },
-            '30': { qrImg.src: = "images/qr30.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0ghZ1rxU6wt5wPfNutRO5RiK4hVKiV9bow2HqxL3h+NTMl25JfO+ayGZUdyC1W5+O8aXFqLaUm6YAEiq2a93aryAPaP90dcuX1LTBRixHbN62Ww/trsjOnDvnoxKueTTJeK&key=khqr" },
+        const qrCodes = {
+            '1': { qr: "images/qr1.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0gh+uoMvC+kRdqomclHVU0NG3t0nGIv0POHZHAxA6rS+KSI75Txm8kB2jtdSHGlURe84TWArCqu3w1/e03B1QkplPO+Djm1Z6BazPlobbvUplDyz9Lwobq1q2BAVxWV/PcJ&key=khqr"},
+            '5': { qr: "images/qr5.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0gh6QyVyskjemucEd5uYQ2jwylCwEj+++WY8lOg9JIIGfjvOi7HHXsDLN9VSV1rKTygT4JdfkPqR27RxfZ38gbPeKhh1gJKFy1qx90vJRGJHlCLyQWQCLsQ2XST6Tc72KIN&key=khqr" },
+            '10': { qr: "images/qr10.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0ghQXbdT4fvGeIaprwqAJQMpc9UEJKPeF/DDVTdawDsMZNeq0efeWgG3tfP6aijijjv/4WBA9+RvI7KITvIFt94bsXSsbHH5tbLCnxJfF+ckBXCbVMJeBhYC7oKrYXKkr4u&key=khqr" },
+            '20': { qr: "images/qr20.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0ghEYeCD+CZuTcATINffu/GhO5/V0WF1t0sYppXkkj27c3dgtGMehcn68UodNfZBg6BB+13yYBD+Nq9F/dJKVieqPixSFmK9bdVP+k8f2zrBilMIKt5AbzIE1MT7m/QLQKA&key=khqr" },
+            '25': { qr: "images/qr25.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0gh5KYUtATUmOtIGgNaUJYSbtSMdSys2X9aAua5EvhDNZ9Gqa2GD/IpFaHy366vP5W/J4JVo6Me5iYo+A1eh33js+PGFa0MQgm1pUtE9PYEcUB/jKrwNsOnfFgBzZ8JApjQ&key=khqr" },
+            '30': { qr: "images/qr30.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0ghZ1rxU6wt5wPfNutRO5RiK4hVKiV9bow2HqxL3h+NTMl25JfO+ayGZUdyC1W5+O8aXFqLaUm6YAEiq2a93aryAPaP90dcuX1LTBRixHbN62Ww/trsjOnDvnoxKueTTJeK&key=khqr" },
             'custom': { 
-                qrImg.src: = "images/qr.jpg", // This should be a QR code for a generic link or your primary account
+                qr: "images/qr.jpg", // This should be a QR code for a generic link or your primary account
                 link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu8yRyA1YGYQ90srEOvcavYJzxCWyXdWvTnQvVuZw0OrOpZBFhMdi0UGFohNwcToXeWlIexdPbOWiYei332ml1PUfKEdLrqW4s5XzWk03kaOoTD7n4/HTeZDycN550qGnOcDOa+AwxInhNXTZoTpKOGpasWg6sDalD4cmlDZgJhBKKp1624aYATZdpWqvCyyBp1s7xZ4pR9g1TMQM4jKOzOBo50zZWBjORaYBhcMXi4XH&key=khqr" 
             }
         };
@@ -465,45 +465,45 @@
             // 1. Determine which payment configuration to use (specific or custom)
              if (amount === 1) {
 
-                data = qrImg['1'];
+                data = qrCodes['1'];
 
                 finalLink = data.link; // Static link for $1
 
             } else if (amount === 5) {
 
-                data = qrImg['5'];
+                data = qrCodes['5'];
 
                 finalLink = data.link; // Static link for $5
 
             } else if (amount === 10) {
 
-                data = qrImg['10'];
+                data = qrCodes['10'];
 
                 finalLink = data.link;
 
             } else if (amount === 20) {
 
-                data = qrImg['20'];
+                data = qrCodes['20'];
 
                 finalLink = data.link;
 
             } else if (amount === 25) {
 
-                data = qrImg['25'];
+                data = qrCodes['25'];
 
                 finalLink = data.link;
 
             } else if (amount === 30) {
 
-                data = qrImg['30'];
+                data = qrCodes['30'];
 
                 finalLink = data.link;
-            if (qrImg[amountKey]) {
-                data = qrImg[amountKey];
+            if (qrCodes[amountKey]) {
+                data = qrCodes[amountKey];
                 finalLink = data.link; // Static link
             } else {
                 // Use the custom link/QR for all other valid amounts
-                data = qrImg['custom'];
+                data = qrCodes['custom'];
                 // Link is dynamic (append the amount parameter) - NOTE: This requires your actual payment system to support amount appending
                 // Since the original was using a static link + amount, I will replicate that logic for the custom case.
                 finalLink = data.link + `&amount=${amount}`; 
