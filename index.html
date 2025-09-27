@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sal's Birthday</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at center, #1a202c 0%, #0d1117 100%); /* Deep space gradient */
+            color: #e6e6e6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+            overflow-x: hidden;
+        }
+
+        /* Subtle moving background pattern for dynamic feel */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.15;
+            /* Tiny white circles for a 'star' effect */
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="1.5" fill="%23FFFFFF"/></svg>');
+            background-size: 50px 50px;
+            animation: moveBackground 60s linear infinite;
+            z-index: -1;
+        }
+        @keyframes moveBackground {
+            from { background-position: 0 0; }
+            to { background-position: 100% 100%; }
+        }
+
+        /* Custom animation for the title glow (Vibrant and smooth) */
+        @keyframes glowing {
+            0% { text-shadow: 0 0 10px #ff6b6b, 0 0 20px #ff6b6b, 0 0 30px #ff6b6b; box-shadow: 0 0 8px rgba(255, 107, 107, 0.6); }
+            50% { text-shadow: 0 0 20px #4ade80, 0 0 40px #4ade80, 0 0 60px #4ade80; box-shadow: 0 0 20px rgba(74, 222, 128, 0.9); }
+            100% { text-shadow: 0 0 10px #ff6b6b, 0 0 20px #ff6b6b, 0 0 30px #ff6b6b; box-shadow: 0 0 8px rgba(255, 107, 107, 0.6); }
+        }
+
+        .title-glow {
+            animation: glowing 3.5s infinite ease-in-out alternate;
+            padding: 0.75rem 1.5rem;
+            border-radius: 1rem;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Digital Timer Style */
+        .digital-display {
+            font-family: monospace;
+            text-shadow: 0 0 8px #10b981, 0 0 20px rgba(16, 185, 129, 0.5);
+            color: #4ade80;
+            font-weight: 700;
+        }
+        .timer-unit {
+            padding: 0 1rem;
+            border-right: 1px solid rgba(52, 211, 153, 0.3);
+        }
+        .timer-unit:last-child {
+            border-right: none;
+        }
+
+        /* Standard Button hover animation */
+        .gift-button {
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+            background-color: #4f46e5 !important;
+        }
+        .gift-button:hover {
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.5), 0 4px 4px -2px rgba(0, 0, 0, 0.1);
+            background-color: #6366f1 !important;
+        }
+
+        /* 🚀 NEW: Quick Select Button Style (Vibrant Gradient) */
+        .quick-select-button {
+            /* Tailwind classes */
+            @apply p-4 rounded-xl font-extrabold text-white shadow-xl transition duration-300 transform hover:scale-105;
+            
+            /* Custom gradient and glow */
+            background: linear-gradient(135deg, #a78bfa 0%, #4ade80 100%); /* Purple-Green */
+            box-shadow: 0 0 15px rgba(167, 139, 250, 0.7), 0 0 25px rgba(74, 222, 128, 0.5);
+        }
+        .quick-select-button:nth-child(2) {
+            background: linear-gradient(135deg, #f87171 0%, #facc15 100%); /* Red-Yellow */
+            box-shadow: 0 0 15px rgba(248, 113, 113, 0.7), 0 0 25px rgba(250, 204, 21, 0.5);
+        }
+        .quick-select-button:nth-child(3) {
+            background: linear-gradient(135deg, #34d399 0%, #22d3ee 100%); /* Green-Cyan */
+            box-shadow: 0 0 15px rgba(52, 211, 153, 0.7), 0 0 25px rgba(34, 211, 238, 0.5);
+        }
+        .quick-select-button:hover {
+            opacity: 0.9;
+        }
+
+        /* Button Pulse Animation */
+        @keyframes buttonPulse {
+            0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(99, 102, 241, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+        }
+        .pulsing-button {
+            animation: buttonPulse 2s infinite;
+        }
+        
+        /* Smooth Entry Animation */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: translateY(20px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .animate-entry {
+            animation: fadeInScale 0.8s ease-out forwards;
+        }
+
+        /* Custom style for the note card to look extra sleek (Glassmorphism) */
+        .note-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px); /* Increased blur for more glass effect */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Subtle floating animation for depth */
+        @keyframes floatSubtle {
+            0% { transform: translate(0, 0px) rotate(0deg); }
+            50% { transform: translate(0, -5px) rotate(0.5deg); }
+            100% { transform: translate(0, 0px) rotate(0deg); }
+        }
+        .float-subtle {
+            animation: floatSubtle 7s ease-in-out infinite;
+        }
+
+        /* Styles for 3D tilt effect */
+        .tilt-card {
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            transition: transform 0.1s ease-out;
+            will-change: transform;
+        }
+        .tilt-card img {
+            transform: translateZ(20px);
+        }
+        
+        /* HIGH IMPACT GIFT CONTAINER */
+        .gift-container-glow {
+            /* Glassmorphism base */
+            background-color: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 2px solid;
+            border-image: linear-gradient(to right, #6366f1, #34d399, #6366f1) 1;
+            
+            /* Neon box shadow effect (Multiple layers for depth) */
+            box-shadow: 
+                0 0 10px rgba(52, 211, 153, 0.5),
+                0 0 20px rgba(99, 102, 241, 0.3),
+                inset 0 0 15px rgba(52, 211, 153, 0.2);
+            transition: all 0.5s ease-in-out;
+        }
+        .gift-container-glow:hover {
+            transform: scale(1.01);
+            box-shadow: 
+                0 0 15px rgba(52, 211, 153, 0.8), 
+                0 0 30px rgba(99, 102, 241, 0.5),
+                inset 0 0 20px rgba(52, 211, 153, 0.4);
+        }
+
+        /* Input field focus glow */
+        .gift-amount-input:focus {
+            box-shadow: 0 0 10px rgba(74, 222, 128, 0.8), inset 0 0 5px rgba(74, 222, 128, 0.5) !important;
+            border-color: #4ade80 !important;
+        }
+
+        /* QR Image Pulse Animation */
+        @keyframes pulseQR {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
+            50% { transform: scale(1.03); box-shadow: 0 0 20px rgba(74, 222, 128, 0.8); }
+        }
+        .qr-pulse {
+            animation: pulseQR 2s infinite ease-in-out alternate;
+        }
+
+        /* Confetti effect for the Thank You Banner */
+        .confetti-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none; /* Make it not block clicks */
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--confetti-color);
+            opacity: 0;
+            border-radius: 50%;
+            animation: falling var(--duration) linear infinite;
+        }
+        @keyframes falling {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Hide number input arrows on some browsers */
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+</head>
+<body>
+    <div id="thankYouBanner" class="fixed top-0 left-0 right-0 p-6 text-center text-2xl sm:text-4xl font-extrabold bg-green-500/90 text-white hidden z-[60] shadow-2xl transition-all duration-500 transform -translate-y-full border-b-4 border-yellow-300">
+        <div class="confetti-effect" id="confettiContainer"></div>
+        THANK YOU! Your generous gift is received! 🥳
+    </div>
+
+    <div class="max-w-5xl w-full mx-auto p-4 sm:p-8 animate-entry">
+        <header class="text-center mb-10">
+            <h1 class="text-2xl sm:text-7xl font-extrabold mb-4 text-white title-glow">
+                🎉 Enjoy My Special Day!! 🎉
+            </h1>
+            <p class="text-xl sm:text-3xl text-green-400 font-semibold mt-4">
+                
+            </p>
+        </header>
+
+        <section class="text-center mb-16">
+            <h2 class="text-xl font-semibold mb-4 text-indigo-300 uppercase tracking-widest">
+                
+            </h2>
+            <div id="countdown" class="inline-flex rounded-xl p-4 md:p-6 shadow-2xl note-card border-green-400/30 border-2">
+                </div>
+        </section>
+
+        <div class="relative my-16">
+            <div class="border-t-2 border-dashed border-indigo-500/50 opacity-30"></div>
+            <div class="absolute inset-0 flex justify-center items-center -mt-1">
+                <div class="h-4 w-4 rounded-full bg-yellow-400 shadow-xl shadow-yellow-500/70 animate-pulse"></div>
+            </div>
+        </div>
+
+        <section class="mb-20">
+            <div class="note-card tilt-card float-subtle flex flex-col lg:flex-row items-center rounded-3xl p-6 sm:p-10 shadow-2xl shadow-indigo-900/50" id="tiltCard">
+                <div class="w-48 h-48 sm:w-64 sm:h-64 mb-6 lg:mb-0 lg:mr-12 flex-shrink-0">
+                    <img src="/images/me.jpg" alt="My Profile Picture" class="w-full h-full object-cover rounded-full border-4 border-yellow-300 shadow-xl shadow-yellow-500/50 transition duration-500 hover:scale-105" onerror="this.onerror=null;this.src='https://placehold.co/600x600/f59e0b/0d1117?text=My+Picture'; console.error('Image failed to load, displaying placeholder.');"/>
+                </div>
+                <div class="text-center lg:text-left">
+                    <h3 class="text-3xl font-extrabold mb-4 text-pink-400 tracking-wider border-b border-pink-400/30 pb-2 inline-block">A Note From Me</h3>
+                    <p class="text-lg text-gray-200 leading-relaxed italic">
+                        "I'm so incredibly excited for my birthday on November 6th, 2025! This is going to be an epic year, and I appreciate every single person who stops by this page. Thank you for all your support, your love, and for helping me celebrate this special day. Let's make it unforgettable!"
+                    </p>
+                    <p class="mt-6 text-yellow-300 font-bold text-xl"> Visal Phan</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-dashed border-indigo-500/50 my-16 opacity-30">
+        
+        <section class="mt-16 text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-8 text-indigo-400">
+                Send a Birthday Gift! 🎁 
+            </h2>
+            <p class="text-4g mb-7 text-gray-400 max-w-3xl mx-auto">
+                Type your amount custom one below you want to gift me.
+            </p>
+
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-lg mx-auto p-6 gift-container-glow rounded-3xl">
+                <div class="relative w-full sm:w-3/5">
+                    <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-2xl text-gray-400 font-bold">$</span>
+                    <input type="number" id="giftAmountInput" min="1" max="100" placeholder="Custom Amount" value=""
+                           class="w-full bg-gray-800 text-white text-2xl font-bold py-3 pl-8 pr-3 rounded-xl focus:ring-4 focus:ring-green-400 focus:border-green-400 border border-gray-700 shadow-inner transition duration-200 gift-amount-input">
+                </div>
+                
+                <button type="button" onclick="handleGiftSubmit()" class="gift-button pulsing-button p-3 rounded-xl text-white font-extrabold text-xl shadow-lg shadow-indigo-500/50 border border-indigo-500 w-full sm:w-2/5">
+                    Send Gift
+                </button>
+            </div>
+            <p id="errorMsg" class="mt-4 text-red-500 font-semibold hidden">
+                Please enter a valid amount between $1 to $100.
+            </p>
+        </section>
+        
+        
+    
+    
+        <hr class="border-t-2 border-dashed border-indigo-500/50 my-16 opacity-30">
+        
+        <section class="mt-16 text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-8 text-indigo-400">
+                You can write something to me in the box below.
+            </h2>
+            <div class="max-w-xl mx-auto p-6 gift-container-glow rounded-3xl">
+                <form action="https://formsubmit.co/50556074875cba31f3dd92e5584b039b" method="POST" class="w-full">
+                    <textarea name="message" placeholder="Write your message here..." required rows="4" class="w-full bg-gray-800 text-white text-lg py-3 px-4 rounded-xl focus:ring-4 focus:ring-green-400 focus:border-green-400 border border-gray-700 shadow-inner transition duration-200 gift-amount-input mb-4"></textarea>
+                    <input type="text" name="From" placeholder="Your Name" rows="4" class="w-full bg-gray-800 text-white text-lg py-3 px-4 rounded-xl focus:ring-4 focus:ring-green-400 focus:border-green-400 border border-gray-700 shadow-inner transition duration-200 gift-amount-input mb-4">
+                    <button type="submit" class="gift-button pulsing-button p-3 rounded-xl text-white font-extrabold text-xl shadow-lg shadow-indigo-500/50 border border-indigo-500 w-full">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </section>
+        </div>
+
+    <div id="giftModal" class="fixed inset-0 bg-black bg-opacity-85 hidden items-center justify-center z-50 p-4" onclick="hideGiftModal()">
+        <div class="note-card rounded-3xl p-6 sm:p-10 shadow-2xl shadow-green-400/20 max-w-lg w-full transform transition-all duration-300 scale-100" onclick="event.stopPropagation()">
+            <h3 id="modalTitle" class="text-3xl font-bold mb-6 text-center text-green-400">Gift Confirmation</h3>
+
+            <div class="flex flex-col items-center space-y-4">
+                <p class="text-gray-300 text-center text-lg">Your Gift Amount: <span id="modalAmountDisplay" class="text-yellow-400 font-extrabold">$0</span></p>
+                <p class="text-gray-300 text-center">Scan the **KHQR code** or click the link below to send your gift.</p>
+                
+                <div class="p-4 bg-white rounded-xl shadow-inner border border-gray-200">
+                    <img id="qrImage" src="" alt="Payment QR Code" class="w-48 h-48 rounded-lg qr-pulse" />
+                </div>
+                
+                <a id="paymentLink" href="#" target="_blank" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-extrabold py-3 px-6 rounded-xl transition duration-300 w-full text-center text-lg mt-6 gift-button" data-amount="0">
+                    Open Payment Link
+                </a>
+            </div>
+
+            <button onclick="hideGiftModal()" class="mt-8 w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 rounded-xl transition duration-200 shadow-md hover:shadow-lg">
+                Close & Return
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // --- Configuration: You MUST replace these placeholders with your ACTUAL payment details ---
+        const qrCodes = {
+            '1': { qr: "/images/qr1.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0gh+uoMvC+kRdqomclHVU0NG3t0nGIv0POHZHAxA6rS+KSI75Txm8kB2jtdSHGlURe84TWArCqu3w1/e03B1QkplPO+Djm1Z6BazPlobbvUplDyz9Lwobq1q2BAVxWV/PcJ&key=khqr" },
+            '5': { qr: "/images/qr5.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0gh6QyVyskjemucEd5uYQ2jwylCwEj+++WY8lOg9JIIGfjvOi7HHXsDLN9VSV1rKTygT4JdfkPqR27RxfZ38gbPeKhh1gJKFy1qx90vJRGJHlCLyQWQCLsQ2XST6Tc72KIN&key=khqr" },
+            '10': { qr: "/images/qr10.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0ghQXbdT4fvGeIaprwqAJQMpc9UEJKPeF/DDVTdawDsMZNeq0efeWgG3tfP6aijijjv/4WBA9+RvI7KITvIFt94bsXSsbHH5tbLCnxJfF+ckBXCbVMJeBhYC7oKrYXKkr4u&key=khqr" },
+            '20': { qr: "/images/qr20.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0ghEYeCD+CZuTcATINffu/GhO5/V0WF1t0sYppXkkj27c3dgtGMehcn68UodNfZBg6BB+13yYBD+Nq9F/dJKVieqPixSFmK9bdVP+k8f2zrBilMIKt5AbzIE1MT7m/QLQKA&key=khqr" },
+            '25': { qr: "/images/qr25.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0gh5KYUtATUmOtIGgNaUJYSbtSMdSys2X9aAua5EvhDNZ9Gqa2GD/IpFaHy366vP5W/J4JVo6Me5iYo+A1eh33js+PGFa0MQgm1pUtE9PYEcUB/jKrwNsOnfFgBzZ8JApjQ&key=khqr" },
+            '30': { qr: "/images/qr30.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0ghZ1rxU6wt5wPfNutRO5RiK4hVKiV9bow2HqxL3h+NTMl25JfO+ayGZUdyC1W5+O8aXFqLaUm6YAEiq2a93aryAPaP90dcuX1LTBRixHbN62Ww/trsjOnDvnoxKueTTJeK&key=khqr" },
+            'custom': { 
+                qr: "/images/qr.jpg", // This should be a QR code for a generic link or your primary account
+                link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu8yRyA1YGYQ90srEOvcavYJzxCWyXdWvTnQvVuZw0OrOpZBFhMdi0UGFohNwcToXeWlIexdPbOWiYei332ml1PUfKEdLrqW4s5XzWk03kaOoTD7n4/HTeZDycN550qGnOcDOa+AwxInhNXTZoTpKOGpasWg6sDalD4cmlDZgJhBKKp1624aYATZdpWqvCyyBp1s7xZ4pR9g1TMQM4jKOzOBo50zZWBjORaYBhcMXi4XH&key=khqr" 
+            }
+        };
+        // ----------------------------------------------------------------------
+
+        // Elements used for the Gift Modal and Thank You Banner
+        const modalEl = document.getElementById('giftModal');
+        const modalTitleEl = document.getElementById('modalTitle');
+        const qrImageEl = document.getElementById('qrImage');
+        const paymentLinkEl = document.getElementById('paymentLink');
+        const thankYouBannerEl = document.getElementById('thankYouBanner');
+        const confettiContainer = document.getElementById('confettiContainer');
+        const giftAmountInput = document.getElementById('giftAmountInput');
+        const errorMsg = document.getElementById('errorMsg');
+        const tiltCard = document.getElementById('tiltCard');
+        const countdownEl = document.getElementById('countdown');
+        const modalAmountDisplayEl = document.getElementById('modalAmountDisplay');
+
+        /**
+         * Countdown Timer Logic
+         */
+        function updateCountdown() {
+            const targetDate = new Date("nov 6, 2025 00:00:00").getTime();
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            const format = (num) => String(num).padStart(2, '0');
+
+            if (distance < 0) {
+                countdownEl.innerHTML = '<p class="text-3xl md:text-5xl text-pink-400 digital-display">HAPPY BIRTHDAY TO ME</p>';
+                clearInterval(window.countdownInterval);
+            } else {
+                countdownEl.innerHTML = `
+                    <div class="timer-unit text-center">
+                        <span class="text-4xl md:text-6xl digital-display">${days}</span>
+                        <p class="text-sm text-gray-400 mt-1">DAYS</p>
+                    </div>
+                    <div class="timer-unit text-center">
+                        <span class="text-4xl md:text-6xl digital-display">${format(hours)}</span>
+                        <p class="text-sm text-gray-400 mt-1">HRS</p>
+                    </div>
+                    <div class="timer-unit text-center">
+                        <span class="text-4xl md:text-6xl digital-display">${format(minutes)}</span>
+                        <p class="text-sm text-gray-400 mt-1">MIN</p>
+                    </div>
+                    <div class="timer-unit text-center">
+                        <span class="text-4xl md:text-6xl digital-display">${format(seconds)}</span>
+                        <p class="text-sm text-gray-400 mt-1">SEC</p>
+                    </div>
+                `;
+            }
+        }
+        
+        function startCountdown() {
+            updateCountdown();
+            window.countdownInterval = setInterval(updateCountdown, 1000);
+        }
+
+        /**
+         * Sets the input field and triggers the submission for quick-select buttons.
+         * @param {number} amount - The specific dollar amount.
+         */
+        function setAndSubmitGift(amount) {
+            giftAmountInput.value = amount;
+            handleGiftSubmit();
+        }
+
+        /**
+         * Handler for the "Send Gift" button click.
+         */
+        function handleGiftSubmit() {
+            const amount = parseInt(giftAmountInput.value);
+            
+            // Basic validation
+            if (isNaN(amount) || amount < 1 || amount > 100) {
+                errorMsg.classList.remove('hidden');
+                return;
+            }
+
+            errorMsg.classList.add('hidden');
+            showGiftModal(amount);
+        }
+
+        // Function to create and drop confetti
+        function createConfetti() {
+            const colors = ['#f472b6', '#34d399', '#fde047', '#6366f1', '#f87171'];
+            confettiContainer.innerHTML = ''; // Clear previous confetti
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.setProperty('--confetti-color', colors[Math.floor(Math.random() * colors.length)]);
+                confetti.style.setProperty('--duration', `${Math.random() * 2 + 3}s`);
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.width = `${Math.random() * 8 + 5}px`;
+                confetti.style.height = confetti.style.width;
+                confetti.style.animationDelay = `-${Math.random() * 5}s`; // Stagger the start
+                confettiContainer.appendChild(confetti);
+            }
+        }
+
+        /**
+         * Shows the custom modal with the selected gift amount details.
+         * @param {number} amount - The selected dollar amount.
+         */
+        function showGiftModal(amount) {
+            let data;
+            let finalLink;
+            const amountKey = String(amount);
+
+            // 1. Determine which payment configuration to use (specific or custom)
+            if (qrCodes[amountKey]) {
+                data = qrCodes[amountKey];
+                finalLink = data.link; // Static link
+            } else {
+                // Use the custom link/QR for all other valid amounts
+                data = qrCodes['custom'];
+                // Link is dynamic (append the amount parameter) - NOTE: This requires your actual payment system to support amount appending
+                // Since the original was using a static link + amount, I will replicate that logic for the custom case.
+                finalLink = data.link + `&amount=${amount}`; 
+            }
+
+            modalTitleEl.textContent = `Thank you for $${amount}!`;
+            modalAmountDisplayEl.textContent = `$${amount}`;
+            
+            // 2. Set QR image and link
+            qrImageEl.src = data.qr; 
+            paymentLinkEl.href = finalLink;
+            paymentLinkEl.textContent = `Click to send $${amount} via Payment App`;
+            paymentLinkEl.setAttribute('data-amount', amount);
+            
+            // Show the modal
+            modalEl.classList.remove('hidden');
+            modalEl.classList.add('flex');
+        }
+
+        /**
+         * Hides the custom modal.
+         */
+        function hideGiftModal() {
+            modalEl.classList.add('hidden');
+            modalEl.classList.remove('flex');
+        }
+
+        /**
+         * Shows the animated "Thank You" banner after the payment link is clicked.
+         */
+        function thankYouEffect(amount) {
+            thankYouBannerEl.textContent = `THANK YOU! for your $${amount} generous gift is received! 🥳`;
+            createConfetti(); // Start the confetti effect
+            
+            // Show banner with animation
+            thankYouBannerEl.classList.remove('hidden', '-translate-y-full');
+            thankYouBannerEl.classList.add('translate-y-0');
+
+            // Make it disappear after 3 seconds
+            setTimeout(() => {
+                thankYouBannerEl.classList.remove('translate-y-0');
+                thankYouBannerEl.classList.add('-translate-y-full');
+                
+                // Fully hide it after transition finishes (0.5s transition)
+                setTimeout(() => {
+                    thankYouBannerEl.classList.add('hidden');
+                }, 500);
+            }, 3000);
+        }
+
+        // --- 3D Tilt Effect Logic ---
+        function applyTilt(e, element) {
+            const rect = element.getBoundingClientRect();
+            const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+            const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+
+            if (!clientX || !clientY) return;
+
+            const x = clientX - rect.left;
+            const y = clientY - rect.top;
+            
+            const xAxis = (rect.width / 2 - x) / 15;
+            const yAxis = (rect.height / 2 - y) / 15;
+
+            element.style.transform = `perspective(1000px) rotateX(${yAxis}deg) rotateY(${-xAxis}deg) translateZ(0)`;
+        }
+
+        function resetTilt(element) {
+            element.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0)';
+        }
+
+        // Attach event listeners for 3D tilt and start timer on load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Start the digital countdown timer
+            startCountdown();
+
+            // 3D Tilt Events
+            tiltCard.addEventListener('mousemove', (e) => applyTilt(e, tiltCard));
+            tiltCard.addEventListener('mouseleave', () => resetTilt(tiltCard));
+            tiltCard.addEventListener('touchmove', (e) => {
+                e.preventDefault();
+                applyTilt(e, tiltCard);
+            }, { passive: false });
+            tiltCard.addEventListener('touchend', () => resetTilt(tiltCard));
+
+
+            // Attach the payment success handler to the link
+            paymentLinkEl.addEventListener('click', function(event) {
+                const amount = event.target.getAttribute('data-amount');
+                if (amount && amount !== '0') {
+                    // Give time for the external link to open
+                    setTimeout(() => {
+                        hideGiftModal(); // Close the payment modal
+                        // We assume payment is initiated since the user clicked the external link
+                        thankYouEffect(amount); 
+                    }, 50); 
+                }
+            });
+        });
+    </script>
+</body>
+</html>
