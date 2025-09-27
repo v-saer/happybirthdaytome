@@ -183,9 +183,7 @@
             0%, 100% { transform: scale(1); box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
             50% { transform: scale(1.03); box-shadow: 0 0 20px rgba(74, 222, 128, 0.8); }
         }
-        .qr-pulse {
-            animation: pulseQR 2s infinite ease-in-out alternate;
-        }
+        
 
         /* Confetti effect for the Thank You Banner */
         .confetti-effect {
@@ -249,14 +247,14 @@
         <div class="relative my-16">
             <div class="border-t-2 border-dashed border-indigo-500/50 opacity-30"></div>
             <div class="absolute inset-0 flex justify-center items-center -mt-1">
-                <div class="h-4 w-4 rounded-full bg-yellow-400 shadow-xl shadow-yellow-500/70 animate-pulse"></div>
+                
             </div>
         </div>
 
         <section class="mb-20">
             <div class="note-card tilt-card float-subtle flex flex-col lg:flex-row items-center rounded-3xl p-6 sm:p-10 shadow-2xl shadow-indigo-900/50" id="tiltCard">
                 <div class="w-48 h-48 sm:w-64 sm:h-64 mb-6 lg:mb-0 lg:mr-12 flex-shrink-0">
-                    <img src="/images/me.jpg" alt="My Profile Picture" class="w-full h-full object-cover rounded-full border-4 border-yellow-300 shadow-xl shadow-yellow-500/50 transition duration-500 hover:scale-105" onerror="this.onerror=null;this.src='https://placehold.co/600x600/f59e0b/0d1117?text=My+Picture'; console.error('Image failed to load, displaying placeholder.');"/>
+                    <img src="/images/me.jpg" alt="My Profile Picture" class="h-4 w-4 rounded-full bg-yellow-400 shadow-xl shadow-yellow-500/70 animate-pulse w-full h-full object-cover rounded-full border-4 border-yellow-300 shadow-xl shadow-yellow-500/30 transition duration-500 hover:scale-105" onerror="this.onerror=null;this.src='https://placehold.co/600x600/f59e0b/0d1117?text=My+Picture'; console.error('Image failed to load, displaying placeholder.');"/>
                 </div>
                 <div class="text-center lg:text-left">
                     <h3 class="text-3xl font-extrabold mb-4 text-pink-400 tracking-wider border-b border-pink-400/30 pb-2 inline-block">A Note From Me</h3>
@@ -342,7 +340,7 @@
     <script>
         // --- Configuration: You MUST replace these placeholders with your ACTUAL payment details ---
         const qrCodes = {
-            '1': { qr: "/images/qr1.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0gh+uoMvC+kRdqomclHVU0NG3t0nGIv0POHZHAxA6rS+KSI75Txm8kB2jtdSHGlURe84TWArCqu3w1/e03B1QkplPO+Djm1Z6BazPlobbvUplDyz9Lwobq1q2BAVxWV/PcJ&key=khqr" },
+            '1': { qr: "/images/qr1.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0gh+uoMvC+kRdqomclHVU0NG3t0nGIv0POHZHAxA6rS+KSI75Txm8kB2jtdSHGlURe84TWArCqu3w1/e03B1QkplPO+Djm1Z6BazPlobbvUplDyz9Lwobq1q2BAVxWV/PcJ&key=khqr"},
             '5': { qr: "/images/qr5.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0gh6QyVyskjemucEd5uYQ2jwylCwEj+++WY8lOg9JIIGfjvOi7HHXsDLN9VSV1rKTygT4JdfkPqR27RxfZ38gbPeKhh1gJKFy1qx90vJRGJHlCLyQWQCLsQ2XST6Tc72KIN&key=khqr" },
             '10': { qr: "/images/qr10.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0ghQXbdT4fvGeIaprwqAJQMpc9UEJKPeF/DDVTdawDsMZNeq0efeWgG3tfP6aijijjv/4WBA9+RvI7KITvIFt94bsXSsbHH5tbLCnxJfF+ckBXCbVMJeBhYC7oKrYXKkr4u&key=khqr" },
             '20': { qr: "/images/qr20.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0ghEYeCD+CZuTcATINffu/GhO5/V0WF1t0sYppXkkj27c3dgtGMehcn68UodNfZBg6BB+13yYBD+Nq9F/dJKVieqPixSFmK9bdVP+k8f2zrBilMIKt5AbzIE1MT7m/QLQKA&key=khqr" },
