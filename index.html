@@ -233,7 +233,6 @@
             </h1>
             
         </header>
->
 
         <div class="relative my-16">
             <div class="border-t-2 border-dashed border-indigo-500/50 opacity-30"></div>
@@ -331,14 +330,14 @@
     <script>
         // --- Configuration: You MUST replace these placeholders with your ACTUAL payment details ---
         const qrCodes = {
-            '1': { qr: "images/qr1.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0gh+uoMvC+kRdqomclHVU0NG3t0nGIv0POHZHAxA6rS+KSI75Txm8kB2jtdSHGlURe84TWArCqu3w1/e03B1QkplPO+Djm1Z6BazPlobbvUplDyz9Lwobq1q2BAVxWV/PcJ&key=khqr"},
-            '5': { qr: "images/qr5.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0gh6QyVyskjemucEd5uYQ2jwylCwEj+++WY8lOg9JIIGfjvOi7HHXsDLN9VSV1rKTygT4JdfkPqR27RxfZ38gbPeKhh1gJKFy1qx90vJRGJHlCLyQWQCLsQ2XST6Tc72KIN&key=khqr" },
-            '10': { qr: "images/qr10.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0ghQXbdT4fvGeIaprwqAJQMpc9UEJKPeF/DDVTdawDsMZNeq0efeWgG3tfP6aijijjv/4WBA9+RvI7KITvIFt94bsXSsbHH5tbLCnxJfF+ckBXCbVMJeBhYC7oKrYXKkr4u&key=khqr" },
-            '20': { qr: "images/qr20.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0ghEYeCD+CZuTcATINffu/GhO5/V0WF1t0sYppXkkj27c3dgtGMehcn68UodNfZBg6BB+13yYBD+Nq9F/dJKVieqPixSFmK9bdVP+k8f2zrBilMIKt5AbzIE1MT7m/QLQKA&key=khqr" },
-            '25': { qr: "images/qr25.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0gh5KYUtATUmOtIGgNaUJYSbtSMdSys2X9aAua5EvhDNZ9Gqa2GD/IpFaHy366vP5W/J4JVo6Me5iYo+A1eh33js+PGFa0MQgm1pUtE9PYEcUB/jKrwNsOnfFgBzZ8JApjQ&key=khqr" },
-            '30': { qr: "images/qr30.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0ghZ1rxU6wt5wPfNutRO5RiK4hVKiV9bow2HqxL3h+NTMl25JfO+ayGZUdyC1W5+O8aXFqLaUm6YAEiq2a93aryAPaP90dcuX1LTBRixHbN62Ww/trsjOnDvnoxKueTTJeK&key=khqr" },
+            '1': { qrImageEl: "images/qr1.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0gh+uoMvC+kRdqomclHVU0NG3t0nGIv0POHZHAxA6rS+KSI75Txm8kB2jtdSHGlURe84TWArCqu3w1/e03B1QkplPO+Djm1Z6BazPlobbvUplDyz9Lwobq1q2BAVxWV/PcJ&key=khqr"},
+            '5': { qrImageEl: "images/qr5.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0gh6QyVyskjemucEd5uYQ2jwylCwEj+++WY8lOg9JIIGfjvOi7HHXsDLN9VSV1rKTygT4JdfkPqR27RxfZ38gbPeKhh1gJKFy1qx90vJRGJHlCLyQWQCLsQ2XST6Tc72KIN&key=khqr" },
+            '10': { qrImageEl: "images/qr10.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0ghQXbdT4fvGeIaprwqAJQMpc9UEJKPeF/DDVTdawDsMZNeq0efeWgG3tfP6aijijjv/4WBA9+RvI7KITvIFt94bsXSsbHH5tbLCnxJfF+ckBXCbVMJeBhYC7oKrYXKkr4u&key=khqr" },
+            '20': { qrImageEl: "images/qr20.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0ghEYeCD+CZuTcATINffu/GhO5/V0WF1t0sYppXkkj27c3dgtGMehcn68UodNfZBg6BB+13yYBD+Nq9F/dJKVieqPixSFmK9bdVP+k8f2zrBilMIKt5AbzIE1MT7m/QLQKA&key=khqr" },
+            '25': { qrImageEl: "images/qr25.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0gh5KYUtATUmOtIGgNaUJYSbtSMdSys2X9aAua5EvhDNZ9Gqa2GD/IpFaHy366vP5W/J4JVo6Me5iYo+A1eh33js+PGFa0MQgm1pUtE9PYEcUB/jKrwNsOnfFgBzZ8JApjQ&key=khqr" },
+            '30': { qrImageEl: "images/qr30.jpg", link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu7MoGiCJZ9tD6xCEaMjpHslsc+njV/a660a/GBLMa0Gm+8XdafDQKdBE3DUk0bNCEXD9zfc6gvsq1Obh3EvPIRfSc2RNd4K1qnbt/j9Ky0ghZ1rxU6wt5wPfNutRO5RiK4hVKiV9bow2HqxL3h+NTMl25JfO+ayGZUdyC1W5+O8aXFqLaUm6YAEiq2a93aryAPaP90dcuX1LTBRixHbN62Ww/trsjOnDvnoxKueTTJeK&key=khqr" },
             'custom': { 
-                qr: "images/qr.jpg", // This should be a QR code for a generic link or your primary account
+                qrImageEl: "images/qr.jpg", // This should be a QR code for a generic link or your primary account
                 link: "https://acledabank.com.kh/acleda?payment_data=qWY5B2SAUfIhLblxzOtfu8yRyA1YGYQ90srEOvcavYJzxCWyXdWvTnQvVuZw0OrOpZBFhMdi0UGFohNwcToXeWlIexdPbOWiYei332ml1PUfKEdLrqW4s5XzWk03kaOoTD7n4/HTeZDycN550qGnOcDOa+AwxInhNXTZoTpKOGpasWg6sDalD4cmlDZgJhBKKp1624aYATZdpWqvCyyBp1s7xZ4pR9g1TMQM4jKOzOBo50zZWBjORaYBhcMXi4XH&key=khqr" 
             }
         };
@@ -472,9 +471,7 @@
             } else if (amount === 30) {
                 data = qrCodes['30'];
                 finalLink = data.link;
-            if (qrCodes[amountKey]) {
-                data = qrCodes[amountKey];
-                finalLink = data.link; // Static link
+             // Static link
             } else {
                 // Use the custom link/QR for all other valid amounts
                 data = qrCodes['custom'];
